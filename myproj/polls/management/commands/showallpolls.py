@@ -6,4 +6,11 @@ class Command(BaseCommand):
     help = 'Shows all polls'
 
     def handle(self, *args, **options):
-        #TODO: add code here to iterate through all polls
+        polls = Poll.objects.all()
+        for poll in polls:
+            self.stdout.write('Poll ID = "%s"' % poll.id)
+            self.stdout.write('\nPoll question = "%s"' % poll.question)
+            self.stdout.write('\nPoll timestampt = "%s"' % poll.pub_date)
+            self.stdout.write('\n\n\n')
+        
+        
